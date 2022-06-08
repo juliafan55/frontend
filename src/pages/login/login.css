@@ -174,3 +174,12 @@ body {
   justify-content: center;
   margin: 20px 0 10px 0;
 }
+
+/* error and success */
+.error-text {
+  color: #ef2d56;
+}
+
+.success-text {
+  color: var(--blue-color);
+}
