@@ -14,24 +14,39 @@ a {
   color: inherit;
 }
 :root {
-  --bg-primary: #fff;
-  --bg-secondary: #f0f2f5;
-  --bg-third: #e4e6eb;
-  --bg-forth: #f0f2f5;
-  --color-primary: #050505;
-  --color-secondary: #65676b;
-  --divider: #ced0d4;
-  --dark-bg-primary: #18191a;
-  --dark-bg-secondary: #242526;
-  --dark-bg-third: #3a3b3c;
-  --dark-color-primary: #242526;
-  --dark-color-secondary: #b0b3b8;
-  --blue-color: #1876f2;
-  --green-color: #42b72a;
-  --light-blue-color: #e7f3ff;
-  --border-color: #ccced2;
+  --bg-primary: #fef6e4;
+  --bg-secondary: #f3d2c1;
+  --color-primary: #001858;
+  --color-secondary: #172c66;
+  --divider: #001858;
+  --dark-bg: #232946;
+  --dark-color-primary: #fffffe;
+  --dark-color-secondary: #b8c1ec;
+  --lorange-color: #f3d2c1;
+  --blue-color: #8bd3dd;
+  --pink-color: #f582ae;
+  --border-color: #001858;
   --shadow-1: rgba(0, 0, 0, 0.2);
-  --shadow-2: rgba(0, 0, 0, 0.1);
-  --shadow-3: rgba(0, 0, 0, 0.3);
+  --shadow-1: rgba(0, 0, 0, 0.1);
+  --shadow-2: rgba(0, 0, 0, 0.3);
   --shadow-inset: rgba(255, 255, 255, 0.5);
+}
+
+/* buttons */
+
+.pink-btn {
+  border: none;
+  outline: none;
+  padding: 8.5px 12px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  background-color: var(--pink-color);
 }
