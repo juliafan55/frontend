@@ -1,0 +1,12 @@
+.register-input-wrap {
+  width: 100% !important;
+}
+
+.register-input-wrap input {
+  width: 300px;
+  background: white;
+}
+
+.register-input-wrap .input-error {
+  max-width: 300px;
+}

@@ -1,0 +1,176 @@
+body {
+  background: var(--bg-secondary);
+}
+
+/* login */
+.login-wrapper {
+  background: var(--bg-secondary);
+}
+
+.login-wrap {
+  height: 78vh;
+  color: var(--color-primary);
+}
+
+.login-1 {
+  width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-1 span {
+  font-size: 20px;
+}
+
+.digital-hub-logo {
+  font-size: 5rem !important;
+  padding: 1rem;
+}
+
+.login-2 {
+  text-align: center;
+  background: var(--bg-secondary);
+}
+
+.login-2-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--bg-primary);
+  box-shadow: 0 1px 2px var(--shadow-1);
+  padding: 1rem;
+  padding-bottom: 2rem;
+  width: 350px;
+  height: fit-content;
+  margin: 1rem auto;
+  border-radius: 10px;
+}
+
+.login-2-wrap button {
+  width: 100%;
+  height: 50px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.login-2-wrap input {
+  display: flex;
+  flex-direction: column;
+}
+
+.forgot-password {
+  color: var(--pink-color);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.sign-splitter {
+  width: 100%;
+  height: 1px;
+  background: var(--bg-secondary);
+}
+
+.open-signup {
+  background: var(--blue-color);
+  width: 70% !important;
+  margin-top: 1 rem;
+}
+
+/* register */
+.register {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-primary);
+  box-shadow: var 0 1px 2px var(--shadow-1);
+  border-radius: 10px;
+  padding: 15px;
+  padding-bottom: 1rem;
+  width: 350px;
+  height: fit-content;
+  color: var(--color-primary);
+}
+
+.register-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px sollid var(--bg-primary);
+}
+
+.register-header i {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+.register-header span {
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.register-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-line {
+  padding: 7px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.register-column {
+  position: relative;
+  align-self: flex-start;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+
+.register-line-header {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 17px;
+  color: var(--color-primary);
+}
+
+.register-grid {
+  margin-top: 5px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  height: 35px;
+  width: 100%;
+}
+
+.register-grid select {
+  width: 90px;
+  font-size: 16px;
+  color: var(--color-primary);
+  background: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.register-btn-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0 10px 0;
+}
