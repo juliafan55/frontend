@@ -1,9 +1,10 @@
 import React from 'react'
+import Header from '../../components/header/Header'
 
 export default function Login() {
     return (
         <div>
-            <h1>Login</h1>
+           <Header />
         </div>
     )
 }

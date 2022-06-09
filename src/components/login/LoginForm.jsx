@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie"
+import DotLoader from "react-spinners/DotLoader"
 
 const loginInfo = {
     email: "",
@@ -16,7 +17,6 @@ export default function LoginForm({setVisible}) {
     const [login, setLogin] = useState(loginInfo);
     const { email, password } = login
     const [error, setError] = useState("")
-    const [success, setSuccess] = useState("")
     const [loading, setLoading] = useState(false)
 
     const dispatch = useDispatch()
@@ -90,7 +90,7 @@ export default function LoginForm({setVisible}) {
                     }
                 </Formik>
                     <Link to="/forgot" className="forgot-password"> Forgot your password?</Link>
-                    
+                    <DotLoader color="#f582ae" loading={loading} size={30} />
                     {error && <div className="error-text">{error}</div>}
 
                 <div className="sign-splitter"></div>
