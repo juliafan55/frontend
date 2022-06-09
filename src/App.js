@@ -2,14 +2,20 @@ import { Routes, Route } from "react-router-dom"
 import Login from "./pages/login/login";
 import Profile from "./pages/profile/profile";
 import Home from "./pages/home/home";
+import LoggedInRoutes from "./routes/LoggedInRoutes";
+import NotLoggedInRoutes from "./routes/NotLoggedInRoutes";
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/login" element={<Login/>} />
-        <Route exact path="/profile" element={<Profile/>} />
+        <Route element={<LoggedInRoutes />}>
+          <Route path="/profile" element={<Profile />} exact />
+          <Route path="/" element={<Home />} exact />
+        </Route>
+        <Route element={<NotLoggedInRoutes />}>
+          <Route path="/login" element={<Login />} exact />
+        </Route>
       </Routes>
     </div>
   )
