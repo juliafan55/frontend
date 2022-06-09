@@ -3,23 +3,28 @@ import "./header.css"
 import {Link } from "react-router-dom"
 import { HomeActive, Search, Friends, Messenger, Menu, Notifications, ArrowDown } from '../../svg'
 import { useSelector } from 'react-redux'
+import SearchMenu from './SearchMenu'
 
 export default function Header() {
     const { user } = useSelector((user) => ({ ...user }));
     const color = "#001858";
     
     return <header>
-        <div className="header-left">
+        <div className="header-left" >
+            <div style={{display: "none"}}>
+
             <Link to="/">
                 <div className="header-logo">
                     <p>dh.</p>
                 </div>
             </Link>
             <div className="search search1">
-                <Search />
+                <Search color={color}/>
                 <input type="text" placeholder="Search Digital Hub" className="hide-input"></input>
             </div>
+            </div>
         </div>
+            <SearchMenu color={color}/>
         <div className="header-middle">
             <Link to="/" className="middle-icon hover-pink">
                 <HomeActive color={color} />

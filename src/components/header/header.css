@@ -1,3 +1,4 @@
+/* header */
 header {
   position: fixed;
   top: 0;
@@ -10,6 +11,7 @@ header {
   color: var(--color-primary);
 }
 
+/* header left */
 .header-left {
   display: flex;
   align-items: center;
@@ -44,6 +46,7 @@ header {
   transform: translateY(-1px);
 }
 
+/* header middle */
 .header-middle {
   display: flex;
   align-items: center;
@@ -78,6 +81,7 @@ header {
   font-size: 13px;
 }
 
+/* header-right */
 .header-right {
   display: flex;
   position: absolute;
@@ -120,4 +124,14 @@ header {
   justify-content: center;
   margin-right: 8px;
   cursor: pointer;
+}
+
+/* search menu */
+.search-area {
+  position: absolute;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--bg-primary);
+  box-shadow: 0 12px 12px var(--shadow-1), inset 0 0 0 0 var(--shadow-inset);
 }
