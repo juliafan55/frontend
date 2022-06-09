@@ -61,3 +61,18 @@ a {
   background: rgba(255, 255, 255, 0.768);
   z-index: 99;
 }
+
+/* hovers */
+.hover-pink:hover {
+  background: var(--pink-color);
+}
+.hover-blue:hover {
+  background: var(--blue-color);
+}
+
+/* card hide */
+.card {
+  height: 500px;
+  width: 500px;
+  background: red;
+}
