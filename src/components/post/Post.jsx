@@ -39,19 +39,33 @@ export default function Post({post}) {
                 </div>
             ) : (
             <>
-                <div className="post-text"> {post.text} </div>
-                {
-                    post.images && post.images.legnth &&
-                    <div>
-                        {
-                            post.images.map((image, i) => (
-                                <img src={image.url} key={i} alt="" />
-                            ))
-                        }
-                    </div>
-                }
-            </>
-            )}
+               <div className="post_text">{post.text}</div>
+          {post.images && post.images.length && (
+            <div
+              className={
+                post.images.length === 1
+                  ? "grid_1"
+                  : post.images.length === 2
+                  ? "grid_2"
+                  : post.images.length === 3
+                  ? "grid_3"
+                  : post.images.length === 4
+                  ? "grid_4"
+                  : post.images.length >= 5 && "grid_5"
+              }
+            >
+              {post.images.slice(0, 5).map((image, i) => (
+                <img src={image.url} key={i} alt="" className={`img-${i}`} />
+              ))}
+              {post.images.length > 5 && (
+                <div className="more-pics-shadow">
+                  +{post.images.length - 5}
+                </div>
+              )}
+            </div>
+          )}
+        </>
+      )}
     </div>
-    )
+  );
 }

@@ -116,8 +116,7 @@ export default function ImagePreview({
               <div className="add-circle">
                 <i className="addPhoto_icon"></i>
               </div>
-              <span>Add Photos/Videos</span>
-              <span>or drag and drop</span>
+              <span>Add Photos</span>
             </div>
           </div>
         )}

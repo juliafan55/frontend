@@ -6,9 +6,6 @@ import Contact from './Contact'
 export default function HomeRight({user}) {
     return (
         <div className="right-home">
-            <div className="heading"> Sponsored </div>
-            <div className="splitter1"></div>
-            <div className="contacts-wrap">
                 <div className="contacts-header">
                     <div className="contacts-header-left"> Contacts </div>
                     <div className="contacts-header-right">
@@ -26,7 +23,6 @@ export default function HomeRight({user}) {
                 <div className="contacts-list">
                     <Contact user={user}/>
                 </div>
-            </div>
         </div>
     )
 }
