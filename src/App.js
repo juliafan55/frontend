@@ -8,31 +8,32 @@ import CreatePostPopup from "./components/creatPostPopup/createPostPopup";
 import { useSelector } from "react-redux"
 import { useState, useReducer, useEffect } from "react"
 import axios from "axios"
+import { postsReducer } from "./helpers/reducers";
 
-function reducer(state, action) {
-  switch (action.type) {
-    case "POSTS_REQUEST":
-      return { ...state, loading: true, error: "" };
-    case "POSTS_SUCCESS":
-      return {
-        ...state,
-        loading: false,
-        posts: action.payload,
-        error: "",
-      };
-    case "POSTS_ERROR":
-      return { ...state, loading: false, error: action.payload }
+// function reducer(state, action) {
+//   switch (action.type) {
+//     case "POSTS_REQUEST":
+//       return { ...state, loading: true, error: "" };
+//     case "POSTS_SUCCESS":
+//       return {
+//         ...state,
+//         loading: false,
+//         posts: action.payload,
+//         error: "",
+//       };
+//     case "POSTS_ERROR":
+//       return { ...state, loading: false, error: action.payload }
       
-    default:
-      return state;
-  }
-}
+//     default:
+//       return state;
+//   }
+// }
 
 
 function App() {
   const { user } = useSelector((state) => ({ ...state }));
   const [visible, setVisible] = useState(false)
-  const [{ loading, error, posts }, dispatch] = useReducer(reducer, { loading: false, posts: [], error: "" })
+  const [{ loading, error, posts }, dispatch] = useReducer(postsReducer, { loading: false, posts: [], error: "" })
   
   useEffect(() => {
     getAllPosts();
@@ -70,6 +71,7 @@ function App() {
       <Routes>
         <Route element={<LoggedInRoutes />}>
           <Route path="/profile" element={<Profile />} exact />
+          <Route path="/profile/:username" element={<Profile />} exact />
           <Route path="/" element={<Home setVisible={setVisible} posts={posts}/>} exact />
         </Route>
         <Route element={<NotLoggedInRoutes />}>
