@@ -1,14 +1,27 @@
 import React, { useState } from 'react'
 import "./header.css"
-import {Link } from "react-router-dom"
+import {Link, useNavigate } from "react-router-dom"
 import { HomeActive, Search, Friends, Messenger, Menu, Notifications, ArrowDown } from '../../svg'
 import { useSelector } from 'react-redux'
 import SearchMenu from './SearchMenu'
+import LoggedInRoutes from '../../routes/LoggedInRoutes'
+import { useDispatch } from 'react-redux'
+import Cookies from 'js-cookie'
 
 export default function Header() {
     const { user } = useSelector((user) => ({ ...user }));
     const color = "#001858";
     const [showSearchMenu, setShowSearchMenu] = useState(false);
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const logout = () => {
+        Cookies.set("user","")
+        dispatch({
+            type: "LOGOUT",
+        })
+        navigate("/login")
+    }
     
     return <header>
         <div className="header-left" >
@@ -47,7 +60,7 @@ export default function Header() {
             <div className="circle-icon hover-pink">
                 <Messenger />
             </div>
-            <div className="circle-icon hover-pink">
+            <div className="circle-icon hover-pink" onClick={() => {logout()}}>
                 <ArrowDown />
             </div>
         </div>
