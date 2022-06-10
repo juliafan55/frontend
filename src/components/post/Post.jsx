@@ -2,8 +2,15 @@ import "./post.css"
 import { Link } from "react-router-dom"
 import Moment from "react-moment"
 import { Dots } from "../../svg"
+import ReactsPopup from "./ReactsPopup"
+import { useState } from "react"
+import CreateComment from "./CreateComment"
+import PostMenu from "./PostMenu"
 
-export default function Post({post}) {
+export default function Post({ post, user }) {
+  const [visible, setVisible] = useState(false)
+  const [showMenu, setShowMenu] = useState(false)
+
     return (
         <div className="post">
       <div className="post-header">
@@ -15,10 +22,10 @@ export default function Post({post}) {
           <div className="header-col">
             <div className="post-profile-name">
               {post.user.first_name} {post.user.last_name}
-            <div className="updated-p">
+            {/* <div className="updated-p">
                 {post.type==="profilePicture" && `updated their profile picture`}
                 {post.type==="cover" && `updated their cover picture`}
-            </div>
+            </div> */}
             </div>
             <div className="post-profile-privacy-date">
               <Moment fromNow interval={30}>
@@ -27,7 +34,7 @@ export default function Post({post}) {
             </div>
           </div>
         </Link>
-        <div className="post-header-right">
+        <div className="post-header-right" onClick={() => setShowMenu((prev) => !prev)}>
           <Dots color="#828387" />
         </div>
             </div>
@@ -65,7 +72,49 @@ export default function Post({post}) {
             </div>
           )}
         </>
-      )}
+        )}
+        <div className="post-info">
+          <div className="reacts-count">
+            <div className="react-count-imgs"></div>
+            <div className="reacts-count-num"></div>
+          </div>
+
+          <div className="to-right">
+            <div className="comments-count"> 13 comments</div>
+            <div className="share-count"> 1 share </div>
+          </div>
+        </div>
+        <div className="post-actions">
+          <ReactsPopup visible={visible} setVisible={setVisible}/>
+          <div className="post-action hover-blue"
+            onMouseOver={() => {
+              setTimeout(() => {
+                setVisible(true)
+              }, 300)
+            }}
+            onMouseLeave={() => {
+              setTimeout(() => {
+                setVisible(false)
+              }, 500)
+             }}>
+            <i className="like_icon"></i>
+            <span>Like</span>
+          </div>
+          <div className="post-action hover-blue">
+            <i className="comment_icon"></i>
+            <span>Comment</span>
+          </div>
+        </div>
+        <div className="comment-wrap">
+          <div className="comments-order">
+            <CreateComment user={user}/>
+          </div>
+          {
+            showMenu && (
+              <PostMenu userId={user.id} postUserId={post.user._id} setShowMenu={setShowMenu}/>
+            )
+          }
+        </div>
     </div>
   );
 }
