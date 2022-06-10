@@ -2,7 +2,7 @@ import React from 'react'
 import "./createPost.css"
 import { Feeling, LiveVideo, Photo } from '../../svg'
 
-export default function CreatePost({user, setVisible}) {
+export default function CreatePost({user, setVisible, profile}) {
     return (
         <div className="create-post">
             <div className="create-post-header">

@@ -8,12 +8,14 @@ import Header from '../../components/header/Header';
 import "./profile.css"
 import ProfilePicInfo from './ProfilePicInfo';
 import Cover from './Cover';
+import CreatePost from '../../components/createPost/CreatePost';
+import Post from "../../components/post/Post"
 
-export default function Profile() {
+export default function Profile({setVisible}) {
     const { username } = useParams();
     const {user} = useSelector((state) => ({...state}))
     let userName = username === undefined ? user.username : username
-    const [visible, setVisible] = useState(false)
+
     const [{ loading, error, profile }, dispatch] = useReducer(profileReducer, { loading: false, profile: [], error: "" })
     const navigate = useNavigate()
     
@@ -50,7 +52,6 @@ export default function Profile() {
         }
     };
     
-    
     return (
         <div className="profile">
             <Header />
@@ -58,7 +59,21 @@ export default function Profile() {
                 <div className="profile-container">
                     <Cover cover={profile.cover} />
                     <ProfilePicInfo profile={profile}/>
-
+                    <div className="profile-grid">
+                        <div className="profile-left"></div>
+                        <div className="profile-right">
+                            <CreatePost user={user} profile setVisible={setVisible} />
+                            <div className="posts">
+                  {profile.posts && profile.posts.length ? (
+                    profile.posts.map((post) => (
+                      <Post post={post} user={user} key={post._id} />
+                    ))
+                  ) : (
+                    <div className="no_posts">No posts available</div>
+                  )}
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

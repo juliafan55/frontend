@@ -24,7 +24,7 @@ export default function Cover({ cover }) {
             </div>
             <div className="open-cover-menu-item hover1">
               <i className="upload_icon"></i>
-              Uplaod Photo
+              Upload Photo
             </div>
           </div>
         )}
