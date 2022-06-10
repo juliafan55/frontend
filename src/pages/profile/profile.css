@@ -117,3 +117,18 @@
 .invert {
   filter: invert(100%);
 }
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 10px;
+}
+
+.no-posts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-secondary);
+}

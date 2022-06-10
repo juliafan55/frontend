@@ -10,11 +10,13 @@ import ProfilePicInfo from './ProfilePicInfo';
 import Cover from './Cover';
 import CreatePost from '../../components/createPost/CreatePost';
 import Post from "../../components/post/Post"
+import Friends from './Friends';
 
 export default function Profile({setVisible}) {
     const { username } = useParams();
     const {user} = useSelector((state) => ({...state}))
     let userName = username === undefined ? user.username : username
+    let visitor = userName === user.username ? false : true
 
     const [{ loading, error, profile }, dispatch] = useReducer(profileReducer, { loading: false, profile: [], error: "" })
     const navigate = useNavigate()
@@ -57,19 +59,23 @@ export default function Profile({setVisible}) {
             <Header />
             <div className="profile-top">
                 <div className="profile-container">
-                    <Cover cover={profile.cover} />
-                    <ProfilePicInfo profile={profile}/>
+                    <Cover cover={profile.cover} visitor={visitor}/>
+                    <ProfilePicInfo profile={profile} visitor={visitor}/>
                     <div className="profile-grid">
-                        <div className="profile-left"></div>
+                        <div className="profile-left">
+                            <Friends friends={profile.friends}/>
+                        </div>
                         <div className="profile-right">
-                            <CreatePost user={user} profile setVisible={setVisible} />
+                            {
+                                !visitor && <CreatePost user={user} profile setVisible={setVisible} />
+                            }
                             <div className="posts">
                   {profile.posts && profile.posts.length ? (
                     profile.posts.map((post) => (
                       <Post post={post} user={user} key={post._id} />
                     ))
                   ) : (
-                    <div className="no_posts">No posts available</div>
+                    <div className="no-posts">No posts available</div>
                   )}
                             </div>
                         </div>
