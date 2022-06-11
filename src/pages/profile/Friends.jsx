@@ -1,7 +1,7 @@
 export default function Friends({ friends }) {
     return (
       <div className="profile-card">
-        <div className="profile-card_-eader">
+        <div className="profile-card-header">
           Friends
           <div className="profile-header-link">See all friends</div>
         </div>

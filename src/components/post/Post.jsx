@@ -15,13 +15,13 @@ export default function Post({ post, user }) {
         <div className="post">
       <div className="post-header">
         <Link
-          to={`/profile/${post.user.username}`}
+          to={`/profile/${post.user?.username}`}
           className="post-header-left"
         >
-          <img src={post.user.picture} alt="" />
+          <img src={post.user?.picture} alt="" />
           <div className="header-col">
             <div className="post-profile-name">
-              {post.user.first_name} {post.user.last_name}
+              {post.user?.first_name} {post.user?.last_name}
             {/* <div className="updated-p">
                 {post.type==="profilePicture" && `updated their profile picture`}
                 {post.type==="cover" && `updated their cover picture`}
