@@ -29,6 +29,7 @@ export default function CreateComment({ postId, user }) {
         if (e.key === "Enter") {
             setLoading(true)
             const comments = await comment(postId, text, "", user.token);
+            console.log("COMMENTS",comments)
             setLoading(false)
             setText("")
         }

@@ -6,6 +6,7 @@ import ReactsPopup from "./ReactsPopup"
 import { useEffect, useState } from "react"
 import CreateComment from "./CreateComment"
 import PostMenu from "./PostMenu"
+import Comment from "./Comment"
 
 export default function Post({ post, user }) {
   const [visible, setVisible] = useState(false)
@@ -16,7 +17,8 @@ export default function Post({ post, user }) {
     setComments(post?.comments)
   }, [post])
   
-  console.log(comments)
+
+  console.log("HEREEEE", comments)
 
     return (
         <div className="post">
@@ -114,7 +116,12 @@ export default function Post({ post, user }) {
         </div>
         <div className="comment-wrap">
           <div className="comments-order">
-            <CreateComment postId={post._id} user={user}/>
+            <CreateComment postId={post._id} user={user} />
+            {
+              comments && comments.slice(0, 3).map((comment, i) => (
+                <Comment comment={comment} key={i} />
+              ))
+            }
           </div>
           {
             showMenu && (
