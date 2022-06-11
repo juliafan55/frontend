@@ -3,13 +3,20 @@ import { Link } from "react-router-dom"
 import Moment from "react-moment"
 import { Dots } from "../../svg"
 import ReactsPopup from "./ReactsPopup"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import CreateComment from "./CreateComment"
 import PostMenu from "./PostMenu"
 
 export default function Post({ post, user }) {
   const [visible, setVisible] = useState(false)
   const [showMenu, setShowMenu] = useState(false)
+  const [comments, setComments] = useState(post?.comments)
+
+  useEffect(() => {
+    setComments(post?.comments)
+  }, [post])
+  
+  console.log(comments)
 
     return (
         <div className="post">
@@ -107,7 +114,7 @@ export default function Post({ post, user }) {
         </div>
         <div className="comment-wrap">
           <div className="comments-order">
-            <CreateComment user={user}/>
+            <CreateComment postId={post._id} user={user}/>
           </div>
           {
             showMenu && (
