@@ -12,8 +12,7 @@ export default function Comment({ comment }) {
               {comment.commentBy.first_name} {comment.commentBy.last_name}
             </div>
             <div className="comment-text">{comment.comment}</div>
-          </div>
-
+        </div>
           <div className="comment-actions">
             <span>Like</span>
             <span>Reply</span>
@@ -23,7 +22,7 @@ export default function Comment({ comment }) {
               </Moment>
             </span>
           </div>
+          </div>
         </div>
-      </div>
     );
   }

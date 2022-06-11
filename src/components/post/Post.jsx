@@ -20,7 +20,7 @@ export default function Post({ post, user }) {
   }, [post])
   
   const showMore = () => {
-    setCount((prev) => +3);
+    setCount((prev) => prev + 3);
 }
 
   console.log("HEREEEE", comments)
@@ -130,7 +130,7 @@ export default function Post({ post, user }) {
             .slice(0, count)
             .map((comment, i) => <Comment comment={comment} key={i} />)}
         {count < comments.length && (
-          <div className="view_comments" onClick={() => showMore()}>
+          <div className="view-comments" onClick={() => showMore()}>
             View more comments
           </div>
         )}
