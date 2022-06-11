@@ -4,7 +4,7 @@ import Picker from "emoji-picker-react"
 import { comment } from "../../helpers/post"
 import {ClipLoader} from "react-spinners"
 
-export default function CreateComment({ postId, user, setCount, setComments }) {
+export default function CreateComment({ postId, user, setCount, setComments, token }) {
     const [picker, setPicker] = useState(false)
     const [text, setText] = useState("")
     const [cursorPosition, setCursorPosition] = useState();

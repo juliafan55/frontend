@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import Moment from "react-moment"
 import { Dots } from "../../svg"
 import ReactsPopup from "./ReactsPopup"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import CreateComment from "./CreateComment"
 import PostMenu from "./PostMenu"
 import Comment from "./Comment"
@@ -14,6 +14,7 @@ export default function Post({ post, user }) {
   const [showMenu, setShowMenu] = useState(false)
   const [comments, setComments] = useState([])
   const [count, setCount] = useState(1)
+  const postRef = useRef(null)
 
   useEffect(() => {
     setComments(post?.comments)
@@ -23,10 +24,9 @@ export default function Post({ post, user }) {
     setCount((prev) => prev + 3);
 }
 
-  console.log("HEREEEE", comments)
 
     return (
-        <div className="post">
+        <div className="post" ref={postRef}>
       <div className="post-header">
         <Link
           to={`/profile/${post.user?.username}`}
@@ -137,7 +137,7 @@ export default function Post({ post, user }) {
           </div>
           {
             showMenu && (
-              <PostMenu userId={user.id} postUserId={post.user._id} setShowMenu={setShowMenu}/>
+              <PostMenu userId={user.id} postUserId={post.user._id} setShowMenu={setShowMenu} token={user.token} postId={post._id} postRef={ postRef}/>
             )
           }
         </div>
