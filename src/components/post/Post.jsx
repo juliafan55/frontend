@@ -8,15 +8,20 @@ import CreateComment from "./CreateComment"
 import PostMenu from "./PostMenu"
 import Comment from "./Comment"
 
+
 export default function Post({ post, user }) {
   const [visible, setVisible] = useState(false)
   const [showMenu, setShowMenu] = useState(false)
-  const [comments, setComments] = useState(post?.comments)
+  const [comments, setComments] = useState([])
+  const [count, setCount] = useState(1)
 
   useEffect(() => {
     setComments(post?.comments)
   }, [post])
   
+  const showMore = () => {
+    setCount((prev) => +3);
+}
 
   console.log("HEREEEE", comments)
 
@@ -117,11 +122,18 @@ export default function Post({ post, user }) {
         <div className="comment-wrap">
           <div className="comments-order">
             <CreateComment postId={post._id} user={user} />
-            {
-              comments && comments.slice(0, 3).map((comment, i) => (
-                <Comment comment={comment} key={i} />
-              ))
-            }
+            {comments &&
+          comments
+            .sort((a, b) => {
+              return new Date(b.commentAt) - new Date(a.commentAt);
+            })
+            .slice(0, count)
+            .map((comment, i) => <Comment comment={comment} key={i} />)}
+        {count < comments.length && (
+          <div className="view_comments" onClick={() => showMore()}>
+            View more comments
+          </div>
+        )}
           </div>
           {
             showMenu && (

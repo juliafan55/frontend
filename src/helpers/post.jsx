@@ -21,4 +21,4 @@ export const comment = async (postId, comment, image, token) => {
       return error.response.data.message;
     }
   };
-  
+ 
