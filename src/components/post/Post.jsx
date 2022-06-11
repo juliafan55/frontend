@@ -94,7 +94,7 @@ export default function Post({ post, user }) {
           </div>
 
           <div className="to-right">
-            <div className="comments-count"> 13 comments</div>
+            <div className="comments-count"> {comments.length} comments</div>
             <div className="share-count"> 1 share </div>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function Post({ post, user }) {
         </div>
         <div className="comment-wrap">
           <div className="comments-order">
-            <CreateComment postId={post._id} user={user} />
+            <CreateComment postId={post._id} user={user} setCount={setCount} setComments={setComments}/>
             {comments &&
           comments
             .sort((a, b) => {

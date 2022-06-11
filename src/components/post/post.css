@@ -484,3 +484,7 @@ react:hover {
   font-weight: 600;
   cursor: pointer;
 }
+
+.view-comments:hover {
+  text-decoration: underline;
+}
