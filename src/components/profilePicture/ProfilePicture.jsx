@@ -3,7 +3,7 @@ import "./profilePicture.css"
 import UpdateProfilePicture from './UpdateProfilePicture'
 
 
-export default function ProfilePicture() {
+export default function ProfilePicture({setShow, pRef }) {
     const refInput = useRef(null)
     const [image, setImage] = useState("")
     const [error, setError] = useState("")
@@ -41,7 +41,7 @@ export default function ProfilePicture() {
             <input type="file" ref={refInput} hidden onChange={handleImage} accept="image/jpeg, image/png, image/webp, image/gif" />
             <div className="post-box picture-box">
                 <div className="box-header">
-                    <div className="small-circle">
+                    <div className="small-circle"onClick={() => setShow(false)} >
                         <i className="exit_icon"></i>
                     </div>
                     <span>Update profile picture</span>
@@ -61,7 +61,7 @@ export default function ProfilePicture() {
                 <div className="old-pictures-wrap"></div>
             </div>
             {
-                image && <UpdateProfilePicture image={image} setImage={setImage}/>
+                image && <UpdateProfilePicture image={image} setImage={setImage} setError={setError} setShow={setShow} pRef={pRef}/>
             }
         </div>
     )

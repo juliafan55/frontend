@@ -1,18 +1,20 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import ProfilePicture from '../../components/profilePicture/ProfilePicture';
 
 export default function ProfilePicInfo({ profile, visitor }) {
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(false)
+  const pRef = useRef(null)
   return (
     <div className="profile-img-wrap">
     {
-        show && <ProfilePicture />
+        show && <ProfilePicture setShow={setShow} pRef={pRef}/>
       }
-            <div className="profile-w-left">
+            <div className="profile-w-left" ref={pRef}>
                 <div className="profile-w-img">
                 <div
             className="profile-w-bg"
+
             style={{
               backgroundSize: "cover",
               backgroundImage: `url(${profile.picture})`,
@@ -20,7 +22,7 @@ export default function ProfilePicInfo({ profile, visitor }) {
           ></div>
             {
               !visitor && (
-                <div className="profile-circle">
+                <div className="profile-circle" onClick={() => setShow(true)}>
                 <i className="camera_filled_icon"></i>
               </div>
               )

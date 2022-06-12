@@ -1,14 +1,23 @@
 import React from 'react'
 import { useCallback, useState, useRef } from 'react'
 import Cropper from "react-easy-crop"
+import getCroppedImg from '../../helpers/getCroppedImg'
+import { useSelector } from 'react-redux'
+import { uploadImages } from '../../helpers/uploadImages'
+import { updateprofilePicture } from '../../helpers/user'
+import { createPost } from '../../helpers/createPost'
+import {PulseLoader} from "react-spinners"
 
-export default function UpdateProfilePicture({ setImage, image }) {
+export default function UpdateProfilePicture({ setImage, image, setError, setShow, pRef }) {
     const [crop, setCrop] = useState({ x: 0, y: 0 })
     const [zoom, setZoom] = useState(1)
+    const [croppedAreaPixels, setCroppedAreaPixels] = useState(null)
+    const [loading, setLoading] = useState(false)
     const slider = useRef(null)
+    const { user } = useSelector((state) => ({ ...state }));
   
     const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
-      console.log(croppedArea, croppedAreaPixels)
+      setCroppedAreaPixels(croppedAreaPixels)
     }, [])
 
     const zoomIn = () => {
@@ -19,6 +28,54 @@ export default function UpdateProfilePicture({ setImage, image }) {
     const zoomOut = () => {
         slider.current.stepDown()
         setZoom(slider.current.value)
+    }
+
+    const getCroppedImage = useCallback(async (show) => {
+        try {
+            const img = await getCroppedImg(image, croppedAreaPixels)
+            if (show) {
+                setZoom(1)
+                setCrop({x:0, y:0})
+                setImage(img)
+                
+            } else {
+
+                return img;
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }, [croppedAreaPixels])
+    
+    const updateProfilePicture = async () => {
+        try {
+            setLoading(true);
+            let img = await getCroppedImage();
+            let blob = await fetch(img).then((b) => b.blob());
+            const path = `${user.username}/profile_pictures`;
+            let formData = new FormData();
+            formData.append("file", blob);
+            formData.append("path", path);
+            const res = await uploadImages(formData, path, user.token);
+            const updated_picture = await updateprofilePicture(
+                res[0].url,
+                user.token
+            );
+            setLoading(false)
+            console.log("UPDATED", updated_picture)
+            if (updated_picture === 'ok') {
+                console.log("NEXT UPDATED", updated_picture)
+                setLoading(false)
+                setImage("")
+                pRef.current.style.backgroundImage = `url(${res[0].url})`
+            } else {
+                setLoading(false)
+                setError(updated_picture)
+            }
+        } catch (error) {
+            setLoading(false);
+            setError(error.response.data.message);
+        }
     }
 
     return (
@@ -52,6 +109,15 @@ export default function UpdateProfilePicture({ setImage, image }) {
                     </div>
                 </div>
             </div>
+                <div className="flex-up">
+                    <div className="pink-btn"><i className="crop_icon"></i>Crop</div>
+                </div>
+                <div className="update-submit-wrap" onClick={() => setShow(false)}>
+                    <div className="link">Cancel</div>
+                <button className="pink-btn" disabled={loading} onClick={() => updateProfilePicture()}>
+                {loading ? <PulseLoader size={5} /> : "Save"}
+                    </button>
+                </div>
             </div>
     )
 }

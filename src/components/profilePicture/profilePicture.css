@@ -82,3 +82,30 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+.flex-up {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 2rem;
+}
+
+.update-submit-wrap {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link {
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.update-submit-wrap button {
+  width: 110px !important;
+}
