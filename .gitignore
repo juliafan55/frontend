@@ -24,8 +24,3 @@ yarn-error.log*
 
 .env
 
-/icons
-/images
-/left
-/reacts
-/stories
