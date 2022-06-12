@@ -1,0 +1,84 @@
+.picture-box {
+  width: 700px;
+  height: 62vh;
+}
+
+.update-picture-wrap {
+  padding: 10px 15px;
+}
+
+.update-picture-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.update-picture-buttons button {
+  width: 100%;
+}
+
+.update-img {
+  width: 700px !important;
+  height: 800px;
+}
+
+.update-center {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cropper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 300px;
+  width: 100%;
+}
+
+.cropper img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.update-img .reactEasyCrop_CropAreaGrid {
+  width: 300px !important;
+  height: 300px !important;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.slider {
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider input[type="range"] {
+  -webkit-appearance: none;
+  width: 55%;
+  height: 4px;
+  background: #ced0d4;
+}
+
+.slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  outline: none;
+  border-radius: 50%;
+  background: var(--pink-color);
+}
+
+.slider-circle {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}

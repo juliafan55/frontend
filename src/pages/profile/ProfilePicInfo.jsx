@@ -1,8 +1,14 @@
 import React from 'react'
+import { useState } from 'react';
+import ProfilePicture from '../../components/profilePicture/ProfilePicture';
 
-export default function ProfilePicInfo({profile, visitor}) {
-    return (
-        <div className="profile-img-wrap">
+export default function ProfilePicInfo({ profile, visitor }) {
+  const [show, setShow] = useState(true)
+  return (
+    <div className="profile-img-wrap">
+    {
+        show && <ProfilePicture />
+      }
             <div className="profile-w-left">
                 <div className="profile-w-img">
                 <div

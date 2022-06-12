@@ -64,7 +64,6 @@ function App() {
     }
   };
 
-
   return (
     <div>
       {visible && <CreatePostPopup user={user} setVisible={setVisible} posts={posts} dispatch={dispatch}/>}
