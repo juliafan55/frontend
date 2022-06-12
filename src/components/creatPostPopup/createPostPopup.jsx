@@ -12,7 +12,7 @@ import PostError from "./PostError"
 import dataURItoBlob from "../../helpers/dataURItoBlob"
 import { uploadImages } from "../../helpers/uploadImages"
 
-export default function CreatePostPopup({ user, setVisible }) {
+export default function CreatePostPopup({ user, setVisible, posts, dispatch }) {
     const popup = useRef(null)
     const [text, setText] = useState("")
     const [showPreview, setShowPreview] = useState(false)
@@ -20,7 +20,6 @@ export default function CreatePostPopup({ user, setVisible }) {
     const [error, setError] = useState("");
     const [images, setImages] = useState([])
     const [background, setBackground] = useState("")
-    
     
     const textRef = useRef(null)
     
@@ -40,7 +39,8 @@ export default function CreatePostPopup({ user, setVisible }) {
             user.token
           );
           setLoading(false);
-          if (response === "ok") {
+          if (response.status === "ok") {
+            dispatch({type:"POSTS_SUCCESS", payload:[response.data, ...posts]})
             setBackground("");
             setText("");
             setVisible(false);
@@ -69,7 +69,8 @@ export default function CreatePostPopup({ user, setVisible }) {
             user.token
           );
           setLoading(false);
-          if (res === "ok") {
+          if (res.status === "ok") {
+            dispatch({type:"POSTS_SUCCESS", payload:[res.data, ...posts]})
             setText("");
             setImages("");
             setVisible(false);
@@ -87,7 +88,8 @@ export default function CreatePostPopup({ user, setVisible }) {
             user.token
           );
           setLoading(false);
-          if (response === "ok") {
+          if (response.status === "ok") {
+            dispatch({type:"POSTS_SUCCESS", payload:[response.data, ...posts]})
             setBackground("");
             setText("");
             setVisible(false);
