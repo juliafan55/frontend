@@ -2,6 +2,8 @@
 
 A blog/social media web app where you can post and comment on other people's post. You are able to post text and photos to document your life!
 
+Backend repository: https://github.com/juliafan55/digital-hub-backend
+
 ### User Stories
 - As a user, I want to be logged in for viewing posts, posting and commenting.
 - As a used, I want to be able to delete only my own posts.
