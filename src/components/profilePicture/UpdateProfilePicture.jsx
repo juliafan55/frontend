@@ -67,16 +67,16 @@ export default function UpdateProfilePicture({ setImage, image, setError, setSho
             );
             setLoading(false)
             console.log("UPDATED", updated_picture)
-            refresh()
-            // if (updated_picture === 'ok') {
-            //     console.log("NEXT UPDATED", updated_picture)
-            //     setLoading(false)
-            //     setImage("")
-            //     pRef.current.style.backgroundImage = `url(${res[0].url})`
-            // } else {
-            //     setLoading(false)
-            //     setError(updated_picture)
-            // }
+            // refresh()
+            if (updated_picture === 'ok') {
+                console.log("NEXT UPDATED", updated_picture)
+                setLoading(false)
+                setImage("")
+                pRef.current.style.backgroundImage = `url(${res[0].url})`
+            } else {
+                setLoading(false)
+                setError(updated_picture)
+            }
         } catch (error) {
             setLoading(false);
             setError(error.response.data.message);
